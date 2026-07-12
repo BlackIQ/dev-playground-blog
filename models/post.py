@@ -1,5 +1,6 @@
 # SQLAlchemy
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
@@ -11,6 +12,11 @@ class PostModel(Base):
 
     id: Mapped[int] = mapped_column(
         primary_key=True,
+        index=True
+    )
+    slug: Mapped[str] = mapped_column(
+        nullable=False,
+        unique=True,
         index=True
     )
     title: Mapped[str] = mapped_column(
@@ -29,4 +35,18 @@ class PostModel(Base):
     views_count: Mapped[int] = mapped_column(
         nullable=False,
         default=0
+    )
+    category_id: Mapped[int] = mapped_column(
+        ForeignKey("categories.id"),
+        nullable=False
+    )
+    tags: Mapped[list["TagModel"]] = relationship(
+        secondary="posts_tags",
+        back_populates="posts"
+    )
+    category: Mapped["CategoryModel"] = relationship(
+        back_populates="posts"
+    )
+    comments: Mapped[list["CommentModel"]] = relationship(
+        back_populates="post"
     )
