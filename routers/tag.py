@@ -92,3 +92,8 @@ async def restore_tag(tag_id: int, db: Session = Depends(get_db)):
     db.refresh(db_tag)
 
     return None
+
+
+@router.get("/{tag_id}/posts")
+async def tag_posts(tag_id: int, db: Session = Depends(get_db)):
+    pass

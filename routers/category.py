@@ -92,3 +92,8 @@ async def restore_category(category_id: int, db: Session = Depends(get_db)):
     db.refresh(db_category)
 
     return None
+
+
+@router.get("/{category_id}/posts")
+async def category_posts(category_id: int, db: Session = Depends(get_db)):
+    pass
