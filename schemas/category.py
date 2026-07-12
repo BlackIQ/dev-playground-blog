@@ -9,6 +9,7 @@ from database.base import BaseSchema
 class Category(BaseSchema):
     name: str
     slug: str
+    description: str
 
 
 class CategoryRead(Category):
