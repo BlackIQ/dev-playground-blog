@@ -1,5 +1,5 @@
 # SQLAlchemy
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
@@ -13,14 +13,18 @@ class TagModel(Base):
         primary_key=True,
         index=True
     )
-    name: Mapped[str] = mapped_column(
-        nullable=False
-    )
     slug: Mapped[str] = mapped_column(
         nullable=False,
         unique=True,
         index=True
     )
+    name: Mapped[str] = mapped_column(
+        nullable=False
+    )
     description: Mapped[str] = mapped_column(
         nullable=False
+    )
+    posts: Mapped[list["PostModel"]] = relationship(
+        secondary="posts_tags",
+        back_populates="tags"
     )
