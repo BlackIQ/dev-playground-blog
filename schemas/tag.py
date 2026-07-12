@@ -9,6 +9,7 @@ from database.base import BaseSchema
 class Tag(BaseSchema):
     name: str
     slug: str
+    description: str
 
 
 class TagRead(Tag):
