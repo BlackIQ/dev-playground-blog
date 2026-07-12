@@ -17,5 +17,10 @@ class CategoryModel(Base):
         nullable=False
     )
     slug: Mapped[str] = mapped_column(
+        nullable=False,
+        unique=True,
+        index=True
+    )
+    description: Mapped[str] = mapped_column(
         nullable=False
     )
