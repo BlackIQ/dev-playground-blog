@@ -6,13 +6,13 @@ from database.base import BaseSchema
 
 
 # Category Schema
-class Category(BaseSchema):
+class CategoryBase(BaseSchema):
     name: str
     slug: str
     description: str
 
 
-class CategoryRead(Category):
+class CategoryRead(CategoryBase):
     id: int
     created_at: datetime
     updated_at: datetime

@@ -6,13 +6,13 @@ from database.base import BaseSchema
 
 
 # Post Schema
-class Post(BaseSchema):
+class PostBase(BaseSchema):
     title: str
     content: str
     description: str
 
 
-class PostRead(Post):
+class PostRead(PostBase):
     id: int
     created_at: datetime
     updated_at: datetime

@@ -6,12 +6,12 @@ from database.base import BaseSchema
 
 
 # Comment Schema
-class Comment(BaseSchema):
+class CommentBase(BaseSchema):
     name: str
     content: str
 
 
-class CommentRead(Comment):
+class CommentRead(CommentBase):
     id: int
     created_at: datetime
     updated_at: datetime

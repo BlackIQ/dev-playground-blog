@@ -1,5 +1,5 @@
 # Schemas
-from schemas.category import Category, CategoryRead
-from schemas.comment import Comment, CommentRead
-from schemas.post import Post, PostRead
-from schemas.tag import Tag, TagRead
+from schemas.category import CategoryBase, CategoryRead
+from schemas.comment import CommentBase, CommentRead
+from schemas.post import PostBase, PostRead
+from schemas.tag import TagBase, TagRead
