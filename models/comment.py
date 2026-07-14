@@ -23,8 +23,10 @@ class Comment(Base):
         nullable=False
     )
     post_id: Mapped[int] = mapped_column(
-        ForeignKey("posts.id"),
-        nullable=False
+        ForeignKey(
+            column="posts.id",
+            ondelete="CASCADE"
+        ),
     )
     post: Mapped["Post"] = relationship(
         back_populates="comments"

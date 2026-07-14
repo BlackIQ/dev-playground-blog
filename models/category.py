@@ -27,5 +27,6 @@ class Category(Base):
         nullable=False
     )
     posts: Mapped[list["Post"]] = relationship(
-        back_populates="category"
+        back_populates="category",
+        cascade="all, delete-orphan"
     )

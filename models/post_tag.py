@@ -11,10 +11,14 @@ class PostTag(Base):
     __tablename__ = "posts_tags"
 
     post_id: Mapped[int] = mapped_column(
-        ForeignKey("posts.id"),
+        ForeignKey(
+            column="posts.id"
+        ),
         primary_key=True,
     )
     tag_id: Mapped[int] = mapped_column(
-        ForeignKey("tags.id"),
+        ForeignKey(
+            column="tags.id"
+        ),
         primary_key=True
     )

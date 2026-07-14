@@ -30,5 +30,3 @@ class Tag(Base):
         secondary="posts_tags",
         back_populates="tags"
     )
-
-    

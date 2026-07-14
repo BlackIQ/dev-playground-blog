@@ -39,7 +39,10 @@ class Post(Base):
         default=0
     )
     category_id: Mapped[int] = mapped_column(
-        ForeignKey("categories.id"),
+        ForeignKey(
+            column="categories.id",
+            ondelete="CASCADE"
+        ),
         nullable=False
     )
     tags: Mapped[list["Tag"]] = relationship(
@@ -50,5 +53,6 @@ class Post(Base):
         back_populates="posts"
     )
     comments: Mapped[list["Comment"]] = relationship(
-        back_populates="post"
+        back_populates="post",
+        cascade="all, delete-orphan",
     )
