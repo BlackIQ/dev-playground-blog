@@ -4,10 +4,12 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
+# Models
+from models import Post
 
 
 # Comment Model
-class CommentModel(Base):
+class Comment(Base):
     __tablename__ = "comments"
 
     id: Mapped[int] = mapped_column(
@@ -24,6 +26,6 @@ class CommentModel(Base):
         ForeignKey("posts.id"),
         nullable=False
     )
-    post: Mapped["PostModel"] = relationship(
+    post: Mapped["Post"] = relationship(
         back_populates="comments"
     )
