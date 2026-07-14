@@ -7,9 +7,11 @@ from database.base import BaseSchema
 
 # Post Schema
 class PostBase(BaseSchema):
+    slug: str
     title: str
     content: str
     description: str
+    category_id: int
 
 
 class PostRead(PostBase):

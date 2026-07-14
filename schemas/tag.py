@@ -7,9 +7,13 @@ from database.base import BaseSchema
 
 # Tag Schema
 class TagBase(BaseSchema):
-    name: str
     slug: str
+    name: str
     description: str
+
+
+class TagCreate(TagBase):
+    pass
 
 
 class TagRead(TagBase):

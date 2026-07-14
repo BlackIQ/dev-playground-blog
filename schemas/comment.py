@@ -9,6 +9,11 @@ from database.base import BaseSchema
 class CommentBase(BaseSchema):
     name: str
     content: str
+    post_id: int
+
+
+class CommentCreate(CommentBase):
+    pass
 
 
 class CommentRead(CommentBase):

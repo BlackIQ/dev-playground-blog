@@ -7,9 +7,13 @@ from database.base import BaseSchema
 
 # Category Schema
 class CategoryBase(BaseSchema):
-    name: str
     slug: str
+    name: str
     description: str
+
+
+class CategoryCreate(CategoryBase):
+    pass
 
 
 class CategoryRead(CategoryBase):
