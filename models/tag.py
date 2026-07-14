@@ -3,10 +3,12 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
+# Models
+from models import Post
 
 
 # Tag Model
-class TagModel(Base):
+class Tag(Base):
     __tablename__ = "tags"
 
     id: Mapped[int] = mapped_column(
@@ -24,7 +26,9 @@ class TagModel(Base):
     description: Mapped[str] = mapped_column(
         nullable=False
     )
-    posts: Mapped[list["PostModel"]] = relationship(
+    posts: Mapped[list["Post"]] = relationship(
         secondary="posts_tags",
         back_populates="tags"
     )
+
+    
