@@ -4,8 +4,6 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
-# Models
-from models import Category, Comment, Tag
 
 
 # Post Model
