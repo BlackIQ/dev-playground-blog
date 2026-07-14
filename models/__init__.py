@@ -1,6 +1,6 @@
 # Models
-from models.category import CategoryModel
-from models.comment import CommentModel
-from models.post import PostModel
-from models.post_tag import PostTagModel
-from models.tag import TagModel
+from models.category import Category
+from models.comment import Comment
+from models.post import Post
+from models.post_tag import PostTag
+from models.tag import Tag
