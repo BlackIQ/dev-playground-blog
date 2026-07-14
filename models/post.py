@@ -4,10 +4,12 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 # BaseModel
 from database.base import Base
+# Models
+from models import Category, Comment, Tag
 
 
 # Post Model
-class PostModel(Base):
+class Post(Base):
     __tablename__ = "posts"
 
     id: Mapped[int] = mapped_column(
@@ -15,9 +17,9 @@ class PostModel(Base):
         index=True
     )
     slug: Mapped[str] = mapped_column(
-        nullable=False,
         unique=True,
-        index=True
+        index=True,
+        nullable=False,
     )
     title: Mapped[str] = mapped_column(
         nullable=False
@@ -40,13 +42,13 @@ class PostModel(Base):
         ForeignKey("categories.id"),
         nullable=False
     )
-    tags: Mapped[list["TagModel"]] = relationship(
+    tags: Mapped[list["Tag"]] = relationship(
         secondary="posts_tags",
         back_populates="posts"
     )
-    category: Mapped["CategoryModel"] = relationship(
+    category: Mapped["Category"] = relationship(
         back_populates="posts"
     )
-    comments: Mapped[list["CommentModel"]] = relationship(
+    comments: Mapped[list["Comment"]] = relationship(
         back_populates="post"
     )
