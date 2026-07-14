@@ -43,8 +43,10 @@ class Post(Base):
             column="categories.id",
             ondelete="CASCADE"
         ),
+        index=True,
         nullable=False
     )
+
     tags: Mapped[list["Tag"]] = relationship(
         secondary="posts_tags",
         back_populates="posts"

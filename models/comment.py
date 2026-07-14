@@ -27,7 +27,9 @@ class Comment(Base):
             column="posts.id",
             ondelete="CASCADE"
         ),
+        nullable=False
     )
+
     post: Mapped["Post"] = relationship(
         back_populates="comments"
     )

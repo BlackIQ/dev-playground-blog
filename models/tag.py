@@ -26,6 +26,7 @@ class Tag(Base):
     description: Mapped[str] = mapped_column(
         nullable=False
     )
+
     posts: Mapped[list["Post"]] = relationship(
         secondary="posts_tags",
         back_populates="tags"

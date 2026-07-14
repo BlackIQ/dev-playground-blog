@@ -12,13 +12,15 @@ class PostTag(Base):
 
     post_id: Mapped[int] = mapped_column(
         ForeignKey(
-            column="posts.id"
+            column="posts.id",
+            ondelete="CASCADE"
         ),
         primary_key=True,
     )
     tag_id: Mapped[int] = mapped_column(
         ForeignKey(
-            column="tags.id"
+            column="tags.id",
+            ondelete="CASCADE"
         ),
         primary_key=True
     )
