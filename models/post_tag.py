@@ -7,7 +7,7 @@ from database.base import Base
 
 
 # Post-Tag Model
-class PostTagModel(Base):
+class PostTag(Base):
     __tablename__ = "posts_tags"
 
     post_id: Mapped[int] = mapped_column(
