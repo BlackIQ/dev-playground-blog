@@ -8,9 +8,9 @@ from sqlalchemy.orm import Session
 # Dependencies
 from dependencies import get_db
 # Model
-from models import TagModel
+from models import Tag
 # Schemas
-from schemas import Tag, TagRead
+from schemas import TagCreate, TagUpdate, TagRead
 
 # FastAPI Router
 router = APIRouter(
@@ -21,14 +21,14 @@ router = APIRouter(
 
 @router.get("", response_model=list[TagRead])
 async def all_tags(db: Session = Depends(get_db)):
-    db_tags = db.query(TagModel).all()
+    db_tags = db.query(Tag).all()
 
     return db_tags
 
 
 @router.get("/{tag_id}", response_model=TagRead)
 async def get_tag(tag_id: int, db: Session = Depends(get_db)):
-    db_tag = db.get(TagModel, tag_id)
+    db_tag = db.get(Tag, tag_id)
 
     if not db_tag:
         raise HTTPException(status_code=404, detail="Tag not found")
@@ -37,8 +37,8 @@ async def get_tag(tag_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("", response_model=TagRead, status_code=status.HTTP_201_CREATED)
-async def create_tag(tag: Tag, db: Session = Depends(get_db)):
-    db_tag = TagModel(**tag.model_dump())
+async def create_tag(tag: TagCreate, db: Session = Depends(get_db)):
+    db_tag = Tag(**tag.model_dump())
 
     db.add(db_tag)
 
@@ -49,8 +49,8 @@ async def create_tag(tag: Tag, db: Session = Depends(get_db)):
 
 
 @router.put("/{tag_id}", response_model=TagRead)
-async def update_tag(tag_id: int, tag: Tag, db: Session = Depends(get_db)):
-    db_tag = db.get(TagModel, tag_id)
+async def update_tag(tag_id: int, tag: TagUpdate, db: Session = Depends(get_db)):
+    db_tag = db.get(Tag, tag_id)
 
     if not db_tag:
         raise HTTPException(status_code=404, detail="Tag not found")
@@ -66,7 +66,7 @@ async def update_tag(tag_id: int, tag: Tag, db: Session = Depends(get_db)):
 
 @router.delete("/{tag_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_tag(tag_id: int, db: Session = Depends(get_db)):
-    db_tag = db.get(TagModel, tag_id)
+    db_tag = db.get(Tag, tag_id)
 
     if not db_tag:
         raise HTTPException(status_code=404, detail="Tag not found")
@@ -81,7 +81,7 @@ async def delete_tag(tag_id: int, db: Session = Depends(get_db)):
 
 @router.post("/{tag_id}/restore", status_code=status.HTTP_204_NO_CONTENT)
 async def restore_tag(tag_id: int, db: Session = Depends(get_db)):
-    db_tag = db.get(TagModel, tag_id)
+    db_tag = db.get(Tag, tag_id)
 
     if not db_tag:
         raise HTTPException(status_code=404, detail="Tag not found")
@@ -92,8 +92,3 @@ async def restore_tag(tag_id: int, db: Session = Depends(get_db)):
     db.refresh(db_tag)
 
     return None
-
-
-@router.get("/{tag_id}/posts")
-async def tag_posts(tag_id: int, db: Session = Depends(get_db)):
-    pass
