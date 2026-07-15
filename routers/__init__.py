@@ -1,3 +1,4 @@
 # Routers
-from routers.category import router
-from routers.tag import router
+import routers.category
+import routers.post
+import routers.tag
