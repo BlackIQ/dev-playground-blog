@@ -9,7 +9,7 @@ from routers import (
 
 # The FastAPI Instance
 app = FastAPI(
-    title="Mahi Notes API",
+    title="Mahi Blog API",
     version="1.0.0",
     summary="A simple Backend as our third project to use APIs in ReactJs",
     description="",
