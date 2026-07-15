@@ -16,6 +16,10 @@ class TagCreate(TagBase):
     pass
 
 
+class TagUpdate(TagBase):
+    pass
+
+
 class TagRead(TagBase):
     id: int
     created_at: datetime
