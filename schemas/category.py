@@ -16,6 +16,10 @@ class CategoryCreate(CategoryBase):
     pass
 
 
+class CategoryUpdate(CategoryBase):
+    pass
+
+
 class CategoryRead(CategoryBase):
     id: int
     created_at: datetime
