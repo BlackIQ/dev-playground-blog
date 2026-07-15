@@ -16,6 +16,10 @@ class CommentCreate(CommentBase):
     pass
 
 
+class CommentUpdate(CommentBase):
+    pass
+
+
 class CommentRead(CommentBase):
     id: int
     created_at: datetime

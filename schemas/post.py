@@ -14,6 +14,14 @@ class PostBase(BaseSchema):
     category_id: int
 
 
+class PosstCreate(PostBase):
+    pass
+
+
+class PostUpdate(PostBase):
+    pass
+
+
 class PostRead(PostBase):
     id: int
     created_at: datetime
