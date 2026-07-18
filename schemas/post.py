@@ -1,26 +1,26 @@
-# Datetime
 from datetime import datetime
 
-# BaseSchema
 from database.base import BaseSchema
 
+from schemas.tag import TagRead
+from schemas.category import CategoryRead
+from schemas.comment import CommentRead
 
-# Post Schema
+
 class PostBase(BaseSchema):
     slug: str
     title: str
     content: str
     description: str
     category_id: int
-    # tag_ids: list[int]
 
 
 class PostCreate(PostBase):
-    pass
+    tag_ids: list[int]
 
 
 class PostUpdate(PostBase):
-    pass
+    tag_ids: list[int]
 
 
 class PostRead(PostBase):
@@ -29,3 +29,7 @@ class PostRead(PostBase):
     updated_at: datetime
     likes_count: int
     views_count: int
+
+    category: CategoryRead
+    tags: list[TagRead]
+    comments: list[CommentRead]
