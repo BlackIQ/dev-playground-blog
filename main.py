@@ -11,11 +11,11 @@ app = FastAPI(
     summary="A simple Backend as our third project to use APIs in ReactJs",
     description="",
     openapi_tags=[
-        {"name": "Application", "description": "Application endpoints like root and ping"},
+        {"name": "Application", "description": "Application endpoints"},
         {"name": "Category", "description": "Category endpoint includes CRUD"},
         {"name": "Tag", "description": "Tag endpoint includes CRUD"},
         {"name": "Post", "description": "Post related operations"},
-    ]
+    ],
 )
 
 

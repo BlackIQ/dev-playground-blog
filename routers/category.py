@@ -7,16 +7,15 @@ from sqlalchemy.orm import Session
 
 # Dependencies
 from dependencies import get_db
+
 # Model
 from models import Category
+
 # Schemas
 from schemas import CategoryCreate, CategoryUpdate, CategoryRead
 
 # FastAPI Router
-router = APIRouter(
-    prefix="/categories",
-    tags=["Category"]
-)
+router = APIRouter(prefix="/categories", tags=["Category"])
 
 
 @router.get("", response_model=list[CategoryRead])
@@ -49,7 +48,9 @@ async def create_category(category: CategoryCreate, db: Session = Depends(get_db
 
 
 @router.put("/{category_id}", response_model=CategoryRead)
-async def update_category(category_id: int, category: CategoryUpdate, db: Session = Depends(get_db)):
+async def update_category(
+    category_id: int, category: CategoryUpdate, db: Session = Depends(get_db)
+):
     db_category = db.get(Category, category_id)
 
     if not db_category:

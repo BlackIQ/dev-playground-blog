@@ -7,16 +7,15 @@ from sqlalchemy.orm import Session
 
 # Dependencies
 from dependencies import get_db
+
 # Model
 from models import Post
+
 # Schemas
 from schemas import PosstCreate, PostUpdate, PostRead
 
 # FastAPI Router
-router = APIRouter(
-    prefix="/posts",
-    tags=["Post"]
-)
+router = APIRouter(prefix="/posts", tags=["Post"])
 
 
 @router.get("", response_model=list[PostRead])

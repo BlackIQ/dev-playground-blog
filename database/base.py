@@ -1,5 +1,6 @@
 # Pydantic
 from pydantic import BaseModel, ConfigDict
+
 # SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
 

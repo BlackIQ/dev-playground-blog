@@ -7,16 +7,15 @@ from sqlalchemy.orm import Session
 
 # Dependencies
 from dependencies import get_db
+
 # Model
 from models import Tag
+
 # Schemas
 from schemas import TagCreate, TagUpdate, TagRead
 
 # FastAPI Router
-router = APIRouter(
-    prefix="/tags",
-    tags=["Tag"]
-)
+router = APIRouter(prefix="/tags", tags=["Tag"])
 
 
 @router.get("", response_model=list[TagRead])
