@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 
 # Routers
-from routers import category, tag, post
+from routers import category, comment, tag, post
 
 # The FastAPI Instance
 app = FastAPI(
@@ -15,6 +15,7 @@ app = FastAPI(
         {"name": "Category", "description": "Category endpoint includes CRUD"},
         {"name": "Tag", "description": "Tag endpoint includes CRUD"},
         {"name": "Post", "description": "Post related operations"},
+        {"name": "Comment", "description": "Comment related operations"},
     ],
 )
 
@@ -33,3 +34,4 @@ async def api():
 app.include_router(category.router, prefix="/api")
 app.include_router(tag.router, prefix="/api")
 app.include_router(post.router, prefix="/api")
+app.include_router(comment.router, prefix="/api")
