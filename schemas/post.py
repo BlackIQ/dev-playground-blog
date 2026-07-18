@@ -12,10 +12,10 @@ class PostBase(BaseSchema):
     content: str
     description: str
     category_id: int
-    tag_ids: list[int]
+    # tag_ids: list[int]
 
 
-class PosstCreate(PostBase):
+class PostCreate(PostBase):
     pass
 
 
