@@ -9,23 +9,26 @@ from database.base import Base
 class Tag(Base):
     __tablename__ = "tags"
 
+    # Columns
     id: Mapped[int] = mapped_column(
         primary_key=True,
-        index=True
+        index=True,
     )
     slug: Mapped[str] = mapped_column(
         nullable=False,
         unique=True,
-        index=True
+        index=True,
     )
     name: Mapped[str] = mapped_column(
-        nullable=False
+        nullable=False,
     )
     description: Mapped[str] = mapped_column(
-        nullable=False
+        nullable=False,
     )
 
+    # Relationships
     posts: Mapped[list["Post"]] = relationship(
+        "Post",
         secondary="posts_tags",
-        back_populates="tags"
+        back_populates="tags",
     )
