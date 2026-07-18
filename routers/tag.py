@@ -5,14 +5,9 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 
-# Dependencies
-from dependencies import get_db
-
-# Model
-from models import Tag
-
-# Schemas
-from schemas import TagCreate, TagUpdate, TagRead
+from dependencies import get_db  # Dependencies
+from models import Tag  # Model
+from schemas import TagCreate, TagUpdate, TagRead  # Schemas
 
 # FastAPI Router
 router = APIRouter(prefix="/tags", tags=["Tag"])

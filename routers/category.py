@@ -5,14 +5,9 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 
-# Dependencies
-from dependencies import get_db
-
-# Model
-from models import Category
-
-# Schemas
-from schemas import CategoryCreate, CategoryUpdate, CategoryRead
+from dependencies import get_db  # Dependencies
+from models import Category  # Model
+from schemas import CategoryCreate, CategoryUpdate, CategoryRead  # Schemas
 
 # FastAPI Router
 router = APIRouter(prefix="/categories", tags=["Category"])

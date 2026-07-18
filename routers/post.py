@@ -5,14 +5,9 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, status, HTTPException
 from sqlalchemy.orm import Session
 
-# Dependencies
-from dependencies import get_db
-
-# Model
-from models import Post
-
-# Schemas
-from schemas import PosstCreate, PostUpdate, PostRead
+from dependencies import get_db  # Dependencies
+from models import Post, Tag  # Models
+from schemas import PostCreate, PostUpdate, PostRead  # Schemas
 
 # FastAPI Router
 router = APIRouter(prefix="/posts", tags=["Post"])
@@ -36,8 +31,14 @@ async def get_post(post_id: int, db: Session = Depends(get_db)):
 
 
 @router.post("", response_model=PostRead, status_code=status.HTTP_201_CREATED)
-async def create_post(post: PosstCreate, db: Session = Depends(get_db)):
-    db_post = Post(**post.model_dump())
+async def create_post(post: PostCreate, db: Session = Depends(get_db)):
+    date = post.model_dump(exclude=("tag_ids"))
+
+    db_post = Post(**date)
+
+    db_tags = db.query(Tag).filter(Tag.id.in_(post.tag_ids)).all()
+
+    db_post.tags = db_tags
 
     db.add(db_post)
 
